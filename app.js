@@ -23,7 +23,7 @@ app.get('/health', (req, res) => {
   const utcSeconds = Date.now()
   const now = new Date(utcSeconds + timezoneOffset).toISOString()
 
-  res.json({ health: 'OK', date_time: now })
+  res.json({ health: 'ok' })
 })
 
 
