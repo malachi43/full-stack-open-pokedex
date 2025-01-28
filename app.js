@@ -18,11 +18,6 @@ app.get('/version', (req, res) => {
 })
 
 app.get('/health', (req, res) => {
-
-  const timezoneOffset = new Date().getTimezoneOffset()
-  const utcSeconds = Date.now()
-  const now = new Date(utcSeconds + timezoneOffset).toISOString()
-
   res.json({ health: 'ok' })
 })
 
