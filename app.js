@@ -1,10 +1,20 @@
 const express = require('express')
 const app = express()
+const morgan = require("morgan");
 
 // get the port from env variable
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
+
+//print the route to the console.
+app.use(morgan("dev"));
 
 app.use(express.static('dist'))
+
+app.get("/version", (req, res) => {
+  res.json({
+    api_version: 1
+  })
+})
 
 app.listen(PORT, () => {
   /* eslint-disable no-console */
