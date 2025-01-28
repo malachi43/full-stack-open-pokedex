@@ -16,6 +16,10 @@ app.get('/version', (req, res) => {
   })
 })
 
+app.get('health', (req, res) => {
+  res.json({ health: "OK", date_time: new Date().toISOString() })
+})
+
 app.listen(PORT, () => {
   /* eslint-disable no-console */
   console.log(`server started on port ${PORT}`)
