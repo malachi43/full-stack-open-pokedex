@@ -18,12 +18,11 @@ app.get('/version', (req, res) => {
 })
 
 app.get('/health', (req, res) => {
+
   const timezoneOffset = new Date().getTimezoneOffset()
   const utcSeconds = Date.now()
   const now = new Date(utcSeconds + timezoneOffset).toISOString()
 
-  // eslint-disable-next-line no-constant-condition
-  if (true) throw new Error('health check failed.')
   res.json({ health: 'OK', date_time: now })
 })
 
