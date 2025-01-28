@@ -17,7 +17,7 @@ app.get('/version', (req, res) => {
 })
 
 app.get('health', (req, res) => {
-  res.json({ health: "OK", date_time: new Date().toISOString() })
+  res.json({ health: 'OK', date_time: new Date().toISOString() })
 })
 
 app.listen(PORT, () => {
