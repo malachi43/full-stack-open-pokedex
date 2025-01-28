@@ -25,5 +25,5 @@ jobs:
     - name: check style
       run: npm run eslint
       if: ${{github.event_name == 'push'}}
-     - name: trigger deployment
-       run:  curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_KEY_ID}}
+    - name: trigger deployment
+      run:  curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_KEY_ID}}
