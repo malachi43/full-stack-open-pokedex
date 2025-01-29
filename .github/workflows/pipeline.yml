@@ -1,5 +1,8 @@
 name: Deployment pipeline
 
+env: 
+
+
 on:
  push:
   branches:
@@ -38,7 +41,7 @@ jobs:
       uses: discord-actions/message@v2
       with:
         webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        message: "Hello, from Github"
+        message: "Hello, from Github - user ${{ github.actor }} trigger the workflow link: ${{ github.repositoryUrl }}"
 
 
     
