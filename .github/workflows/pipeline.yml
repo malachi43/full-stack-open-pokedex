@@ -28,16 +28,23 @@ jobs:
     - name: check style
       run: npm run eslint
 
-    - name: Bump version and push tag
-      if: ${{ github.event_name == 'push' }}
-      uses: anothrNick/github-tag-action@1.71.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: true
-        PRERELEASE: true
-        DEFAULT_BUMP: patch
-
     - name: trigger deployment
       # the github.event_name will be 'push' if the pull_request is merged.
       if: ${{ github.event_name == 'push' }}
       run: curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_KEY_ID}}
+
+
+    
+ tag_release:
+  needs: [simple_deployment_pipeline]
+  runs-on: ubuntu-20.04
+  
+  steps:
+   - name: Bump version and push tag
+     if: ${{ github.event_name == 'push' }}
+     uses: anothrNick/github-tag-action@1.71.0
+     env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      WITH_V: true
+      PRERELEASE: true
+      DEFAULT_BUMP: patch
