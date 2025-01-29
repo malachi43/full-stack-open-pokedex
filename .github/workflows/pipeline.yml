@@ -35,6 +35,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
         PRERELEASE: true
+        DEFAULT_BUMP: patch
 
     - name: trigger deployment
       # the github.event_name will be 'push' if the pull_request is merged.
