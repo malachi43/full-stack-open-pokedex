@@ -1,6 +1,6 @@
 ---
   name: Deployment pipeline
-  env: null
+
   on:
     push:
       branches:
@@ -11,6 +11,7 @@
       types:
         - opened
         - synchronize
+
   jobs:
     simple_deployment_pipeline:
       runs-on: ubuntu-20.04
@@ -32,7 +33,7 @@
           uses: discord-actions/message@v2
           with:
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-            message: Hello, from Github
+            message: Hello, from Github - user ${{ github.actor}} initiate this merge visit - ${{ github.repositoryUrl }}
     tag_release:
       needs:
         - simple_deployment_pipeline
