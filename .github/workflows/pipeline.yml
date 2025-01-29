@@ -32,7 +32,7 @@
           uses: discord-actions/message@v2
           with:
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-            message: Hello, from Github - ${{ github.actor }}
+            message: Hello, from Github!
     tag_release:
       needs:
         - simple_deployment_pipeline
