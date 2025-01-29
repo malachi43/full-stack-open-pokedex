@@ -41,7 +41,8 @@ jobs:
   
   steps:
    - name: Bump version and push tag
-     if: ${{ github.event_name == 'push' }}
+     if: ${{ github.event_name == 'push' }} 
+     #setup repo
      uses: actions/checkout@v4
      uses: anothrNick/github-tag-action@1.71.0
      env:
