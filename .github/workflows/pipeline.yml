@@ -33,7 +33,12 @@
           uses: discord-actions/message@v2
           with:
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-            message: Hello, from Github - user ${{ github.actor}} initiate this merge visit - ${{ github.repositoryUrl }}
+            message: |
+              message: Hello, from Github
+              user: ${{ github.actor}} initiated this merge
+              link_to_repo: https://github.com/malachi43/full-stack-open-pokedex
+              status: healthy
+
     tag_release:
       needs:
         - simple_deployment_pipeline
