@@ -15,15 +15,20 @@ on:
 jobs:
  simple_deployment_pipeline:
   runs-on: ubuntu-20.04
+
   steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with: 
        node-version: "20"
+
     - name: install dependencies
       run: npm install
+
     - name: check style
       run: npm run eslint
-      if: ${{github.event_name == 'push'}}
+
     - name: trigger deployment
-      run:  curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_KEY_ID}}
+      # the github.event_name will be 'push' if the pull_request is merged.
+      if: ${{ github.event_name == 'push' }}
+      run: curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_KEY_ID}}
