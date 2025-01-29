@@ -32,8 +32,7 @@
           uses: discord-actions/message@v2
           with:
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-            message: Hello, from Github - user ${{ github.actor }} trigger the workflow link
-              - ${{ github.repositoryUrl }}
+            message: Hello, from Github - ${{ github.actor }}
     tag_release:
       needs:
         - simple_deployment_pipeline
