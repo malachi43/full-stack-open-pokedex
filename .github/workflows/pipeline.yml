@@ -28,6 +28,12 @@ jobs:
     - name: check style
       run: npm run eslint
 
+    - name: Bump version and push tag
+      if: ${{ github.event_name == 'push' }}
+      uses: anothrNick/github-tag-action@1.71.0
+      env:
+        GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
+
     - name: trigger deployment
       # the github.event_name will be 'push' if the pull_request is merged.
       if: ${{ github.event_name == 'push' }}
